@@ -1,0 +1,46 @@
+<!-- partials/header.hbs -->
+<nav class="navbar fixed-top navbar-expand-lg mt-3 mx-auto">
+    <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
+        <a class="navbar-brand" href="#">4P Bank</a>
+        <ul class="navbar-nav mx-auto my-2 my-lg-0 navbar-nav-scroll" style="max-height: 100px;">
+            {{#if isAuthenticated}}
+              <input type="password" name="password" class="form-search rounded-pill" placeholder="Tìm kiếm trong 4P Bank">
+            {{else}}
+              <li class="nav-item">
+                <a class="btn btn-sm mx-2 rounded-pill {{#if (eq currentPage 'home')}}active disabled{{/if}}" href="/" role="button">Trang chủ</a>
+              </li>
+              <li class="nav-item">
+                  <a class="btn btn-sm mx-2 rounded-pill {{#if (eq currentPage 'about')}}active disabled{{/if}}" href="/about" role="button">Về 4P Bank</a>
+              </li>
+              <li class="nav-item">
+                  <a class="btn btn-sm mx-2 rounded-pill {{#if (eq currentPage 'faq')}}active disabled{{/if}}" href="/faq" role="button">Hỏi & Đáp</a>
+              </li>
+            {{/if}}
+        </ul>
+        <ul class="navbar-nav">
+            {{#if isAuthenticated}}
+                <div class="greeting">
+                  <div class="greeting-text">
+                    <span class="greeting-hello">Chào,</span>
+                    <span class="greeting-name">Tên khách hàng</span>
+                  </div>
+                  <div class="dropdown">
+                    <div class="profile-placeholder" id="profileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></div>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropdown">
+                      <a class="dropdown-item" href="#">Profile</a>
+                      <a class="dropdown-item" href="#">Settings</a>
+                      <a class="dropdown-item" href="/user/logout">Logout</a>
+                    </div>
+                  </div>
+                </div>
+            {{else}}
+                <li class="nav-item">
+                    <a class="btn btn-sm mx-2 rounded-pill {{#if (eq currentPage 'register')}}active disabled{{/if}}" href="/register" role="button">Đăng ký</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-sm mx-2 rounded-pill {{#if (eq currentPage 'login')}}active disabled{{/if}}" href="/login" role="button">Đăng nhập</a>
+                </li>
+            {{/if}}
+        </ul>
+    </div>
+</nav>
